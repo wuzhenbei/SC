@@ -43,7 +43,7 @@ public class StepCounterActivity<mDatabaseManager> extends AppCompatActivity imp
     String versionCode = BuildConfig.VERSION_NAME;
     StepDatabaseHelper dbHelper = new StepDatabaseHelper(this, "StepDatabaseHelper.db", null, 1);
 
-    DatabaseManager mDatabaseManager = DatabaseManager.getInstance(dbHelper);
+    //DatabaseManager mDatabaseManager = DatabaseManager.getInstance(dbHelper);
 
     //StepDatabaseHelper dbHelper = new StepDatabaseHelper(this, "StepDatabaseHelper.db", null, 1);
 
@@ -59,7 +59,9 @@ public class StepCounterActivity<mDatabaseManager> extends AppCompatActivity imp
             new Thread(new Runnable() {
                 @Override
                 public void run() {
+                    DatabaseManager mDatabaseManager = DatabaseManager.getInstance(dbHelper);
                     uploadData(versionCode,sp,mDatabaseManager);
+                    Log.d(TAG,"子线程");
                 }
             }).start();
             handler.postDelayed(this, 3000);
@@ -175,7 +177,9 @@ public class StepCounterActivity<mDatabaseManager> extends AppCompatActivity imp
         //dbHelper = new StepDatabaseHelper(this, "StepDatabaseHelper.db", null, 1);
 
         // 获取今天的用户步数
+        DatabaseManager mDatabaseManager = DatabaseManager.getInstance(dbHelper);
         user_step = getTodayUserStep(mDatabaseManager);
+        Log.d(TAG,"主线程显示步数！！！！");
 
         // 更新步数显示
         cc.setCurrentCount(Integer.parseInt(stepGoal),user_step);
