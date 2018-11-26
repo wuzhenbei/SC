@@ -9,6 +9,7 @@ import android.util.Log;
 public class StepDatabaseHelper extends SQLiteOpenHelper {
 
     private static StepDatabaseHelper mInstance;
+    private static final int dbVersion = 1;
 
     public StepDatabaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
@@ -53,6 +54,13 @@ public class StepDatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        //String CREATE_TEMP_TABLE;
+        //String CREATE_NEW_TABLE;
+        //String INSERT_DATA;
+        //String DROP_OLD_TABLE;
+        //db.execSQL(CREATE_TEMP_TABLE);
+        //db.execSQL(CREATE_NEW_TABLE);
+        //db.execSQL(INSERT_DATA);
+        //db.execSQL(DROP_OLD_TABLE);
     }
 }

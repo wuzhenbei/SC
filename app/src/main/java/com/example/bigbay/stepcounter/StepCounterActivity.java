@@ -169,10 +169,10 @@ public class StepCounterActivity<mDatabaseManager> extends AppCompatActivity imp
         // 声明变量
         int user_step;  // 用户步数
         String stepGoal = (String) sp.getParam("stepGoal", "10000");
-        StepDatabaseHelper dbHelper;
+        //StepDatabaseHelper dbHelper;
 
         // 读取数据库
-        dbHelper = new StepDatabaseHelper(this, "StepDatabaseHelper.db", null, 1);
+        //dbHelper = new StepDatabaseHelper(this, "StepDatabaseHelper.db", null, 1);
 
         // 获取今天的用户步数
         user_step = getTodayUserStep(mDatabaseManager);
@@ -184,8 +184,8 @@ public class StepCounterActivity<mDatabaseManager> extends AppCompatActivity imp
 
     }
     private void assignViews(){
-        cc = (StepArcView)findViewById(R.id.cc);
-        tv_set = (TextView)findViewById(R.id.tv_set);
+        cc = findViewById(R.id.cc);
+        tv_set = findViewById(R.id.tv_set);
     }
 
 
