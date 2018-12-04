@@ -93,7 +93,7 @@ public class StepTools {
         // 计算今天用户步数
         Cursor cursor = db.query("UserStep", null, "date = ?", new String[]{history_date}, null, null, "time_stamp");
         if (cursor.moveToFirst()) {
-
+                /*
                 do {
                     cursor_temp_1 = cursor.getInt(cursor.getColumnIndex("system_step"));
                     cursor.moveToNext();
@@ -103,7 +103,11 @@ public class StepTools {
                     Log.d(TAG, "日期：" + history_date + " 步数:" + String.valueOf(user_step));
 
                 } while (cursor.moveToNext());
-
+                */
+                do {
+                    system_step = cursor.getInt(cursor.getColumnIndex("system_step"));
+                    Log.d("getHistoryStep", "日期：" + history_date + " 步数:" + String.valueOf(system_step));
+                } while (cursor.moveToNext());
         }else {
             user_step = 0;
             Log.d(TAG, "NO HISTORY DATA!");
