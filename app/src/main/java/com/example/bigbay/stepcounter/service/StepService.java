@@ -156,11 +156,14 @@ public class StepService extends Service implements SensorEventListener {
        if (last_time_stamp < getTimeStamp(today_date, "yyyy-MM-dd")) {
 
            //**************** 两条数据不在同一天 ******************//
-
-           // 记录昨天的最后一个时间节点
+ 
+           // 记录前一次打开的时间节点（并不一定是昨天）
+           cursor = db.query("UserStep", null, null, null, null, null, "time_stamp desc", "1");
+           String last_date = cursor.getString(cursor.getColumnIndex("date"));
+           cursor.close();
            values.put("time_stamp", last_time_stamp);
            values.put("system_step", last_system_step);
-           values.put("date", getDate(-1, "yyyy-MM-dd"));
+           values.put("date", last_date);
            db.insert("UserStep",null, values);
            values.clear();
 
